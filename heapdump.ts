@@ -18,12 +18,14 @@ async function signIn(userAgent: string, cookie: string): Promise<string> {
         },
     })
 
-    const result = await response.json()
-    const status = result.status
+    const result = await response.text()
+    logger.info("heapdump收到响应:" + result)
+    const resultJson = eval(result)
+    const status = resultJson.status
     if (status) {
         return "## heapdump\n- 签到结果：成功"
     } else {
-        return "## heapdump\n- 签到结果：失败，原因：" + result.message
+        return "## heapdump\n- 签到结果：失败，原因：" + resultJson.message
     }
 }
 
