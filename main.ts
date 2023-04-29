@@ -8,7 +8,7 @@ const PC_USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebK
 const serverChanSendKey = process.env.SERVER_CHAN_SEND_KEY
 const dingtalkUrl = process.env.DINGTALK_URL
 
-const heapdumpCookie = process.env.heapdumpCookie
+const heapdumpCookie = process.env.HEAPDUMP_COOKIE
 
 main()
   .then(() => {
