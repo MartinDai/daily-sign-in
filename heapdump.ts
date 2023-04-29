@@ -22,7 +22,7 @@ async function signIn(userAgent: string, cookie: string): Promise<string> {
     if (status == 200) {
         const result = await response.text()
         logger.info("heapdump收到响应:" + result)
-        const resultJson = eval(result)
+        const resultJson = JSON.parse(result)
         if (resultJson.status) {
             return "## heapdump\n- 签到结果：成功"
         } else {
