@@ -22,6 +22,7 @@ main()
 async function main() {
   let signInResArray = new Array();
   if (heapdumpCookie) {
+    logger.info("heapdump cookie:" + heapdumpCookie)
     let heapdumpRes = await heapdump.signIn(PC_USER_AGENT, heapdumpCookie).catch((err) => {
       logger.error("执行heapdump签到异常:%s", err)
     });

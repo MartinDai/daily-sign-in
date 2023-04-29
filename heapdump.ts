@@ -18,14 +18,20 @@ async function signIn(userAgent: string, cookie: string): Promise<string> {
         },
     })
 
-    const result = await response.text()
-    logger.info("heapdump收到响应:" + result)
-    const resultJson = eval(result)
-    const status = resultJson.status
-    if (status) {
-        return "## heapdump\n- 签到结果：成功"
+    const status = response.status
+    if (status == 200) {
+        const result = await response.text()
+        logger.info("heapdump收到响应:" + result)
+        const resultJson = eval(result)
+        if (resultJson.status) {
+            return "## heapdump\n- 签到结果：成功"
+        } else {
+            return "## heapdump\n- 签到结果：失败，原因：" + resultJson.message
+        }
+    } else if (status == 401) {
+        return "## heapdump\n- 签到结果：失败，原因：Cookie已过期"
     } else {
-        return "## heapdump\n- 签到结果：失败，原因：" + resultJson.message
+        return "## heapdump\n- 签到结果：失败，原因：Response Status=" + status
     }
 }
 
