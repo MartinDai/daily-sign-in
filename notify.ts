@@ -2,10 +2,10 @@ import { send } from 'process'
 import logger from './logger'
 
 class notify {
-    toServerChan(message: string, sendKey: string) {
-        toServerChan(message, sendKey)
+    async toServerChan(message: string, sendKey: string) {
+        return toServerChan(message, sendKey)
     }
-    toDingtalk(message: string, url: string) {
+    async toDingtalk(message: string, url: string) {
         return toDingtalk(message, url)
     }
 }
@@ -14,9 +14,9 @@ async function toServerChan(message: string, sendKey: string) {
     if (!sendKey) {
         return
     }
-    logger.info("send notify to ServerChan:" + message)
+    logger.info("send notify to ServerChan\n" + message)
 
-    await fetch("https://sctapi.ftqq.com/" + sendKey + ".send", {
+    const response = await fetch("https://sctapi.ftqq.com/" + sendKey + ".send", {
         method: 'POST',
         body: JSON.stringify({
             title: '签到通知',
@@ -26,13 +26,17 @@ async function toServerChan(message: string, sendKey: string) {
             'content-type': 'application/json',
         },
     })
+
+    const status = response.status
+    const result = await response.text()
+    logger.info("send notify to ServerChan response status:" + status + " result:" + result)
 }
 
 async function toDingtalk(message: string, url: string) {
     if (!url) {
         return
     }
-    logger.info("send notify to Dingtalk:" + message)
+    logger.info("send notify to Dingtalk\n" + message)
     await fetch(url, {
         method: 'POST',
         body: JSON.stringify({

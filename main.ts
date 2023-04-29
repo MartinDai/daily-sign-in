@@ -31,12 +31,12 @@ async function main() {
   }
 
   let message = signInResArray.join("\n")
-  logger.info("签到结果:\n" + message)
+  logger.info("执行结果:\n" + message)
 
   await sendNotify(message)
 }
 
 async function sendNotify(message: string) {
-  notify.toServerChan(message, serverChanSendKey)
-  notify.toDingtalk(message, dingtalkUrl)
+  await notify.toServerChan(message, serverChanSendKey)
+  await notify.toDingtalk(message, dingtalkUrl)
 }
