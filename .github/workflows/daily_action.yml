@@ -1,0 +1,31 @@
+name: Daily Sign In
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 每天9点执行
+    - cron: '0 0 9 * *'
+
+jobs:
+  main:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: true
+      - name: signIn
+        uses: nick-fields/retry@v2
+        env:
+          SERVER_CHAN_SEND_KEY: ${{ secrets.SERVER_CHAN_SEND_KEY }}
+          DINGTALK_URL: ${{ secrets.DINGTALK_URL }}
+          GH_TOKEN: ${{ secrets.HEAPDUMP_COOKIE }}
+        with:
+          timeout_minutes: 10
+          max_attempts: 3
+          retry_wait_seconds: 60
+          command: pnpm run signIn
