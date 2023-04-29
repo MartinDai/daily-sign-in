@@ -8,7 +8,7 @@ const PC_USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebK
 const serverChanSendKey = process.env.SERVER_CHAN_SEND_KEY
 const dingtalkUrl = process.env.DINGTALK_URL
 
-const heapdumpCookie = '_ga=GA1.1.1275103011.1682753860; _bl_uid=F1l3bh9314no3a77C8dL0Uw0a9qe; serviceTicket=36a35898b2964ee08a8107369a0145bc; JSESSIONID=C73C81DACB1C53D353A28A3DEA68F6BE; _ga_T124D4ZQ7J=GS1.1.1682753859.1.1.1682753877.0.0.0'
+const heapdumpCookie = process.env.HEAPDUMP_COOKIE
 
 main()
   .then(() => {
