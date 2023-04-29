@@ -21,11 +21,13 @@ main()
 
 async function main() {
   let signInResArray = new Array();
-  let heapdumpRes = await heapdump.signIn(PC_USER_AGENT, heapdumpCookie).catch((err) => {
-    logger.error("执行heapdump签到异常:%s", err)
-  });
-  if (heapdumpRes) {
-    signInResArray.push(heapdumpRes)
+  if (heapdumpCookie) {
+    let heapdumpRes = await heapdump.signIn(PC_USER_AGENT, heapdumpCookie).catch((err) => {
+      logger.error("执行heapdump签到异常:%s", err)
+    });
+    if (heapdumpRes) {
+      signInResArray.push(heapdumpRes)
+    }
   }
 
   let message = signInResArray.join("\n")
