@@ -3,8 +3,8 @@ name: Daily Sign In
 on:
   workflow_dispatch:
   schedule:
-    # 每天北京时间9点35执行
-    - cron: '35 1 * * *'
+    # 每天北京时间9执行
+    - cron: '0 1 * * *'
 
 jobs:
   main:
