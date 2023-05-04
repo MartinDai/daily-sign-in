@@ -23,7 +23,8 @@ jobs:
         env:
           SERVER_CHAN_SEND_KEY: ${{ secrets.SERVER_CHAN_SEND_KEY }}
           DINGTALK_URL: ${{ secrets.DINGTALK_URL }}
-          HEAPDUMP_COOKIE: ${{ secrets.HEAPDUMP_COOKIE }}
+          HEAPDUMP_ACCOUNT: ${{ secrets.HEAPDUMP_ACCOUNT }}
+          HEAPDUMP_PASSWD: ${{ secrets.HEAPDUMP_PASSWD }}
         with:
           timeout_minutes: 10
           max_attempts: 3
