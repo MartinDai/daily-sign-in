@@ -8,7 +8,9 @@ const PC_USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebK
 const serverChanSendKey = process.env.SERVER_CHAN_SEND_KEY
 const dingtalkUrl = process.env.DINGTALK_URL
 
-const heapdumpCookie = process.env.HEAPDUMP_COOKIE
+const heapdumpAccount = process.env.HEAPDUMP_ACCOUNT
+const heapdumpPasswd = process.env.HEAPDUMP_PASSWD
+
 
 main()
   .then(() => {
@@ -21,8 +23,8 @@ main()
 
 async function main() {
   let signInResArray = new Array();
-  if (heapdumpCookie) {
-    let heapdumpRes = await heapdump.signIn(PC_USER_AGENT, heapdumpCookie).catch((err) => {
+  if (heapdumpAccount && heapdumpPasswd) {
+    let heapdumpRes = await heapdump.signIn(PC_USER_AGENT, heapdumpAccount, heapdumpPasswd).catch((err) => {
       logger.error("执行heapdump签到异常:%s", err)
     });
     if (heapdumpRes) {

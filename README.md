@@ -9,7 +9,7 @@
 _**注意：实际执行的时间会因为Github自身的调度能力有限而有所延迟，实测配置9点的定时实际是9点55左右才会真正被调度执行（仅供参考）**_
 
 # 支持签到的网站
-- [heapdump](https://heapdump.cn/)，需配置secrets key：HEAPDUMP_COOKIE
+- [heapdump](https://heapdump.cn/)，需配置secrets key：HEAPDUMP_ACCOUNT,HEAPDUMP_PASSWD
 
 # 支持的通知方式
 - [Server酱](https://sct.ftqq.com/)，需配置secrets key：SERVER_CHAN_SEND_KEY
