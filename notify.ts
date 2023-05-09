@@ -1,19 +1,25 @@
-import { send } from 'process'
 import logger from './logger'
 
+const serverChanSendKey = process.env.SERVER_CHAN_SEND_KEY
+const dingtalkUrl = process.env.DINGTALK_URL
+
 class notify {
-    async toServerChan(message: string, sendKey: string) {
-        return toServerChan(message, sendKey)
+    async sendNotify(message: string) {
+        return sendNotify(message)
     }
-    async toDingtalk(message: string, url: string) {
-        return toDingtalk(message, url)
+}
+
+async function sendNotify(message: string) {
+    if (serverChanSendKey) {
+        await toServerChan(message, serverChanSendKey)
+    }
+
+    if (dingtalkUrl) {
+        await toDingtalk(message, dingtalkUrl)
     }
 }
 
 async function toServerChan(message: string, sendKey: string) {
-    if (!sendKey) {
-        return
-    }
     logger.info("send notify to ServerChan\n" + message)
 
     const response = await fetch("https://sctapi.ftqq.com/" + sendKey + ".send", {
@@ -29,15 +35,12 @@ async function toServerChan(message: string, sendKey: string) {
 
     const status = response.status
     const result = await response.text()
-    logger.info("send notify to ServerChan response status:" + status + " result:" + result)
+    logger.info("received ServerChan response status:" + status + " result:" + result)
 }
 
 async function toDingtalk(message: string, url: string) {
-    if (!url) {
-        return
-    }
     logger.info("send notify to Dingtalk\n" + message)
-    await fetch(url, {
+    const response = await fetch(url, {
         method: 'POST',
         body: JSON.stringify({
             msgtype: 'markdown',
@@ -50,6 +53,10 @@ async function toDingtalk(message: string, url: string) {
             'content-type': 'application/json',
         },
     })
+
+    const status = response.status
+    const result = await response.text()
+    logger.info("received Dingtalk response status:" + status + " result:" + result)
 }
 
 function instance() {

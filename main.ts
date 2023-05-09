@@ -5,12 +5,8 @@ import notify from './notify'
 const MOBILE_USER_AGENT = "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36 Edg/112.0.1722.58"
 const PC_USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.58"
 
-const serverChanSendKey = process.env.SERVER_CHAN_SEND_KEY
-const dingtalkUrl = process.env.DINGTALK_URL
-
 const heapdumpAccount = process.env.HEAPDUMP_ACCOUNT
 const heapdumpPasswd = process.env.HEAPDUMP_PASSWD
-
 
 main()
   .then(() => {
@@ -35,10 +31,5 @@ async function main() {
   let message = signInResArray.join("\n")
   logger.info("执行结果:\n" + message)
 
-  await sendNotify(message)
-}
-
-async function sendNotify(message: string) {
-  await notify.toServerChan(message, serverChanSendKey)
-  await notify.toDingtalk(message, dingtalkUrl)
+  await notify.sendNotify(message)
 }
