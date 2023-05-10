@@ -3,12 +3,6 @@ import logger from './logger'
 const serverChanSendKey = process.env.SERVER_CHAN_SEND_KEY
 const dingtalkUrl = process.env.DINGTALK_URL
 
-class notify {
-    async sendNotify(message: string) {
-        return sendNotify(message)
-    }
-}
-
 async function sendNotify(message: string) {
     if (serverChanSendKey) {
         await toServerChan(message, serverChanSendKey)
@@ -59,8 +53,4 @@ async function toDingtalk(message: string, url: string) {
     logger.info("received Dingtalk response status:" + status + " result:" + result)
 }
 
-function instance() {
-    return new notify()
-}
-
-export default instance();
+export default {sendNotify}
