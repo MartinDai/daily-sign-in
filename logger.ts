@@ -1,17 +1,17 @@
-import pino, { stdTimeFunctions } from 'pino'
+import pino, {stdTimeFunctions} from 'pino'
 
 export default pino({
-  transport: {
-    target: 'pino-pretty',
-    options: {
-      colorize: true,
-      translateTime: 'SYS:isoUtcDateTime',
+    transport: {
+        target: 'pino-pretty',
+        options: {
+            colorize: true,
+            translateTime: 'SYS:isoUtcDateTime',
+        },
     },
-  },
-  formatters: {
-    bindings: function () {
-      return {}
+    formatters: {
+        bindings: function () {
+            return {}
+        },
     },
-  },
-  timestamp: stdTimeFunctions.isoTime,
+    timestamp: stdTimeFunctions.isoTime,
 })
