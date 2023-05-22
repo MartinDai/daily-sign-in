@@ -1,6 +1,6 @@
-import logger from '../logger'
-import user_agent from '../user_agent'
-import message from '../message'
+import logger from '../util/logger'
+import user_agent from '../util/user_agent'
+import message from '../util/message'
 
 const heapdumpAccount = process.env.HEAPDUMP_ACCOUNT
 const heapdumpPasswd = process.env.HEAPDUMP_PASSWD

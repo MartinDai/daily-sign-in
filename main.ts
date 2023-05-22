@@ -1,4 +1,4 @@
-import logger from './logger'
+import logger from './util/logger'
 import heapdump from './site/heapdump'
 import notify from './notify/notify'
 
