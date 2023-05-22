@@ -24,7 +24,7 @@ async function signIn(): Promise<string> {
         return ""
     }
 
-    return message.buildMessage(HEAD, heapdumpRes)
+    return message.buildMarkdown(HEAD, heapdumpRes)
 }
 
 async function doSignIn(): Promise<Array<string>> {

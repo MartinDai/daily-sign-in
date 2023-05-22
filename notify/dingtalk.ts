@@ -1,6 +1,5 @@
 import logger from "../util/logger";
 
-process.env.DINGTALK_URL = 'https://oapi.dingtalk.com/robot/send?access_token=d470f2c11af3f5d0005746f0c1d7fde72e044e0b6dfb48557f17720f798fbaf0'
 const dingtalkUrl = process.env.DINGTALK_URL
 
 async function send(message: string) {

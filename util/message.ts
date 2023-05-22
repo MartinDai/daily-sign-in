@@ -1,4 +1,4 @@
-function buildMessage(head: string, lines: Array<string>): string {
+function buildMarkdown(head: string, lines: Array<string>): string {
     //为所有行加上"- "前缀，表示无序列表
     lines.forEach((line, index) => {
         lines[index] = "- " + line
@@ -7,4 +7,8 @@ function buildMessage(head: string, lines: Array<string>): string {
     return head + "\n" + lines.join("\n")
 }
 
-export default {buildMessage}
+function buildNotifyMessage(segments: Array<string>): string {
+    return segments.join("\n")
+}
+
+export default {buildMarkdown, buildNotifyMessage}

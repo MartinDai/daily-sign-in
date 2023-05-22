@@ -1,5 +1,6 @@
 import logger from './util/logger'
 import heapdump from './site/heapdump'
+import message from './util/message'
 import notify from './notify/notify'
 
 main()
@@ -25,8 +26,8 @@ async function main() {
         return
     }
 
-    let message = signInResArray.join("\n")
-    logger.info("执行结果:\n" + message)
+    let result = message.buildNotifyMessage(signInResArray)
+    logger.info("执行结果:\n" + result)
 
-    await notify.sendNotify(message)
+    await notify.send(result)
 }
