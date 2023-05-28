@@ -13,6 +13,7 @@ _**注意：实际执行的时间会因为Github自身的调度能力有限而�
 ## 支持签到的网站
 
 - [heapdump](https://heapdump.cn/)，需配置secrets key：HEAPDUMP_ACCOUNT,HEAPDUMP_PASSWD
+- [V2EX](https://www.v2ex.com/)，需配置secrets key：V2EX_COOKIE
 
 ## 支持的通知方式
 

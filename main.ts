@@ -2,6 +2,7 @@ import logger from './util/logger'
 import heapdump from './site/heapdump'
 import message from './util/message'
 import notify from './notify/notify'
+import v2ex from "./site/v2ex";
 
 main()
     .then(() => {
@@ -19,6 +20,12 @@ async function main() {
     let heapdumpRes = await heapdump.signIn()
     if (heapdumpRes) {
         signInResArray.push(heapdumpRes)
+    }
+
+    //v2ex签到
+    let v2exRes = await v2ex.signIn()
+    if (v2exRes) {
+        signInResArray.push(v2exRes)
     }
 
     if (signInResArray.length == 0) {
