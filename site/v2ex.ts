@@ -45,12 +45,12 @@ async function doSignIn(): Promise<Array<string>> {
     if (status == 200) {
         let result = await response.text()
         let receivedArray = result.match("每日登录奖励已领取")
-        if (receivedArray.length != 0) {
+        if (receivedArray != null && receivedArray.length != 0) {
             return ["签到结果：失败，原因：今日已领取过登录奖励"]
         }
 
         let onceArray = result.match("once=(.+?)'")
-        if (onceArray.length == 0) {
+        if (onceArray == null || onceArray.length == 0) {
             return ["签到结果：失败，原因：未匹配到once"]
         }
 
@@ -64,7 +64,7 @@ async function doSignIn(): Promise<Array<string>> {
         })
         result = await response.text()
         receivedArray = result.match("每日登录奖励已领取")
-        if (receivedArray.length == 0) {
+        if (receivedArray == null || receivedArray.length == 0) {
             logger.info("V2EX签到响应:" + result)
             return ["签到结果：失败，原因：参考日志"]
         }
