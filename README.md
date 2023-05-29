@@ -10,6 +10,26 @@
 
 _**注意：实际执行的时间会因为Github自身的调度能力有限而有所延迟，实测配置9点的定时实际是9点55左右才会真正被调度执行（仅供参考）**_
 
+## 本地开发
+
+### 下载安装node和npm
+[官方文档](https://nodejs.cn/npm/cli/v8/configuring-npm/install/)
+
+### 安装pnpm
+```
+npm install -g pnpm
+```
+
+### 本地编译安装代码
+```
+pnpm install
+```
+
+### 执行代码
+```
+pnpm run signIn
+```
+
 ## 支持签到的网站
 
 - [heapdump](https://heapdump.cn/)，需配置secrets key：HEAPDUMP_ACCOUNT,HEAPDUMP_PASSWD
