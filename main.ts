@@ -3,6 +3,7 @@ import heapdump from './site/heapdump'
 import message from './util/message'
 import notify from './notify/notify'
 import v2ex from "./site/v2ex";
+import bilibili from "./site/bilibili";
 
 main()
     .then(() => {
@@ -26,6 +27,12 @@ async function main() {
     let v2exRes = await v2ex.signIn()
     if (v2exRes) {
         signInResArray.push(v2exRes)
+    }
+
+    //B站签到
+    let bilibiliRes = await bilibili.signIn()
+    if (bilibiliRes) {
+        signInResArray.push(bilibiliRes)
     }
 
     if (signInResArray.length == 0) {
