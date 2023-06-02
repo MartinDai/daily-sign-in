@@ -39,6 +39,20 @@ async function doSignIn(): Promise<Array<string>> {
     })
 
     let status = response.status
+    if (status != 200) {
+        return ["签到结果：失败，原因：Response Status=" + status]
+    }
+
+    //再获取一遍，得到最新的数据
+    response = await fetch(NAV_URL, {
+        method: 'GET',
+        headers: {
+            'User-Agent': userAgent,
+            'Cookie': bilibiliCookie,
+        }
+    })
+
+    status = response.status
     if (status == 200) {
         let result = await response.text()
         const resultJson = JSON.parse(result)
