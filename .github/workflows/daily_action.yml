@@ -26,6 +26,7 @@ jobs:
           HEAPDUMP_ACCOUNT: ${{ secrets.HEAPDUMP_ACCOUNT }}
           HEAPDUMP_PASSWD: ${{ secrets.HEAPDUMP_PASSWD }}
           V2EX_COOKIE: ${{ secrets.V2EX_COOKIE }}
+          BILIBILI_COOKIE: ${{ secrets.BILIBILI_COOKIE }}
         with:
           timeout_minutes: 10
           max_attempts: 3
