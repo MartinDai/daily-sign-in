@@ -4,6 +4,7 @@ import message from '../util/message'
 
 const bilibiliCookie = process.env.BILIBILI_COOKIE
 
+const HEART_BEAT_URL_URL = "https://api.bilibili.com/x/click-interface/web/heartbeat"
 const NAV_URL = "https://api.bilibili.com/x/web-interface/nav"
 const HEAD = "## B站"
 
@@ -30,9 +31,10 @@ async function doSignIn(): Promise<Array<string>> {
 
     logger.info("开始执行B站签到")
     const userAgent = user_agent.getRandomPcUserAgent()
-    let response = await fetch(NAV_URL, {
-        method: 'GET',
+    let response = await fetch(HEART_BEAT_URL_URL, {
+        method: 'POST',
         headers: {
+            'Content-Type': "application/x-www-form-urlencoded",
             'User-Agent': userAgent,
             'Cookie': bilibiliCookie,
         }
