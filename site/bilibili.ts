@@ -4,7 +4,7 @@ import message from '../util/message'
 
 const bilibiliCookie = process.env.BILIBILI_COOKIE
 
-const HEART_BEAT_URL_URL = "https://api.bilibili.com/x/click-interface/web/heartbeat"
+const HEART_BEAT_URL = "https://api.bilibili.com/x/click-interface/web/heartbeat"
 const NAV_URL = "https://api.bilibili.com/x/web-interface/nav"
 const HEAD = "## B站"
 
@@ -31,7 +31,7 @@ async function doSignIn(): Promise<Array<string>> {
 
     logger.info("开始执行B站签到")
     const userAgent = user_agent.getRandomPcUserAgent()
-    let response = await fetch(HEART_BEAT_URL_URL, {
+    let response = await fetch(HEART_BEAT_URL, {
         method: 'POST',
         headers: {
             'Content-Type': "application/x-www-form-urlencoded",
@@ -45,7 +45,6 @@ async function doSignIn(): Promise<Array<string>> {
         return ["签到结果：失败，原因：Response Status=" + status]
     }
 
-    //再获取一遍，得到最新的数据
     response = await fetch(NAV_URL, {
         method: 'GET',
         headers: {
