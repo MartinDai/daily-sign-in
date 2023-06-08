@@ -35,6 +35,7 @@ pnpm run signIn
 - [heapdump](https://heapdump.cn/)，需配置secrets key：HEAPDUMP_ACCOUNT,HEAPDUMP_PASSWD
 - [V2EX](https://www.v2ex.com/)，需配置secrets key：V2EX_COOKIE
 - [B站](https://www.bilibili.com/)，需配置secrets key：BILIBILI_COOKIE
+- [恩山论坛](https://www.right.com.cn/)，需配置secrets key：RIGHT_COOKIE
 
 ## 支持的通知方式
 

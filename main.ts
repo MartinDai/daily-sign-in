@@ -4,6 +4,7 @@ import message from './util/message'
 import notify from './notify/notify'
 import v2ex from "./site/v2ex";
 import bilibili from "./site/bilibili";
+import right from "./site/right";
 
 main()
     .then(() => {
@@ -34,6 +35,13 @@ async function main() {
     if (bilibiliRes) {
         signInResArray.push(bilibiliRes)
     }
+
+    //恩山论坛登录
+    let rightRes = await right.signIn()
+    if (rightRes) {
+        signInResArray.push(rightRes)
+    }
+
 
     if (signInResArray.length == 0) {
         logger.info("没有执行结果需要通知")
