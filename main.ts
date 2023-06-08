@@ -16,39 +16,20 @@ main()
     })
 
 async function main() {
-    let signInResArray = [];
-
-    //heapdump签到
-    let heapdumpRes = await heapdump.signIn()
-    if (heapdumpRes) {
-        signInResArray.push(heapdumpRes)
+    const signInResArray = []
+    for (const service of [heapdump, v2ex, bilibili, right]) {
+        const res = await service.signIn();
+        if (res) {
+            signInResArray.push(res)
+        }
     }
 
-    //v2ex签到
-    let v2exRes = await v2ex.signIn()
-    if (v2exRes) {
-        signInResArray.push(v2exRes)
+    if (signInResArray.length === 0) {
+        logger.info("没有执行结果需要通知");
+        return;
     }
 
-    //B站签到
-    let bilibiliRes = await bilibili.signIn()
-    if (bilibiliRes) {
-        signInResArray.push(bilibiliRes)
-    }
-
-    //恩山论坛登录
-    let rightRes = await right.signIn()
-    if (rightRes) {
-        signInResArray.push(rightRes)
-    }
-
-
-    if (signInResArray.length == 0) {
-        logger.info("没有执行结果需要通知")
-        return
-    }
-
-    let result = message.buildNotifyMessage(signInResArray)
+    const result = message.buildNotifyMessage(signInResArray)
     logger.info("执行结果:\n" + result)
 
     await notify.send(result)
