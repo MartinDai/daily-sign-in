@@ -60,6 +60,8 @@ async function doSignIn(): Promise<Array<string>> {
         let credit
         if (matches && matches.length > 1) {
             credit = matches[1];
+        } else {
+            logger.error("获取恩山论坛积分失败，response:" + result)
         }
 
         return ["登录结果：成功", "积分：" + credit]

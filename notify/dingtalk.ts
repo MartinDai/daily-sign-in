@@ -7,7 +7,7 @@ async function send(message: string) {
         return
     }
 
-    logger.info("send notify to Dingtalk\n" + message)
+    logger.info("send notify to Dingtalk")
     const response = await fetch(dingtalkUrl, {
         method: 'POST',
         body: JSON.stringify({

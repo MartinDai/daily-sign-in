@@ -42,6 +42,12 @@ async function doSignIn(): Promise<Array<string>> {
     let status = signInResponse.status
     if (status != 200) {
         return ["签到结果：失败，原因：Response Status=" + status]
+    } else {
+        let signInResult = await signInResponse.text()
+        const signInJson = JSON.parse(signInResult)
+        if (signInJson.code == -101) {
+            return ["签到结果：失败", "原因：Cookie已过期"]
+        }
     }
 
     await util.sleep(5000)
@@ -59,6 +65,9 @@ async function doSignIn(): Promise<Array<string>> {
         let result = await dataResponse.text()
         const resultJson = JSON.parse(result)
         let data = resultJson.data
+        if (!data.money) {
+            logger.error("获取硬币余额失败，response:" + result)
+        }
         return ["签到结果：成功", "硬币余额：" + data.money]
     } else {
         return ["签到结果：失败，原因：Response Status=" + status]
