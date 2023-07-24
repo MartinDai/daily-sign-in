@@ -56,6 +56,7 @@ async function doSignIn(): Promise<Array<string>> {
     status = response.status
     if (status == 200) {
         let result = await response.text()
+        logger.info("恩山签到响应:" + result)
         const matches = CREDIT_REX.exec(result)
         let credit
         if (matches && matches.length > 1) {
