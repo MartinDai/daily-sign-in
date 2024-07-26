@@ -6,10 +6,5 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "strict": true
-  },
-  "ts-node": {
-    "transpileOnly": true,
-    "esm": true,
-    "experimentalSpecifierResolution": "node"
   }
 }

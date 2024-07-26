@@ -1,4 +1,4 @@
-import logger from "../util/logger";
+import logger from "../utils/logger";
 
 const serverChanSendKey = process.env.SERVER_CHAN_SEND_KEY
 

@@ -1,4 +1,4 @@
-import logger from "../util/logger";
+import logger from "../utils/logger";
 
 const dingtalkUrl = process.env.DINGTALK_URL
 

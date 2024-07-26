@@ -1,12 +1,13 @@
-import logger from './util/logger'
+import logger from './utils/logger'
 import heapdump from './site/heapdump'
-import message from './util/message'
+import message from './utils/message'
 import notify from './notify/notify'
 import v2ex from "./site/v2ex";
 import bilibili from "./site/bilibili";
 import right from "./site/right";
+import NodeSeek from "./site/NodeSeek";
 
-main()
+index()
     .then(() => {
         process.exit(0)
     })
@@ -15,9 +16,9 @@ main()
         process.exit(-1)
     })
 
-async function main() {
+async function index() {
     const signInResArray = []
-    for (const service of [heapdump, v2ex, bilibili, right]) {
+    for (const service of [heapdump, v2ex, bilibili, right, NodeSeek]) {
         const res = await service.signIn();
         if (res) {
             signInResArray.push(res)

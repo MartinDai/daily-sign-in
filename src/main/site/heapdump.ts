@@ -1,9 +1,9 @@
-import logger from '../util/logger'
-import user_agent from '../util/user_agent'
-import message from '../util/message'
+import logger from '../utils/logger'
+import user_agent from '../utils/user_agent'
+import message from '../utils/message'
 
 const heapdumpAccount = process.env.HEAPDUMP_ACCOUNT
-const heapdumpPasswd = process.env.HEAPDUMP_PASSWD
+const heapdumpPassword = process.env.HEAPDUMP_PASSWD
 
 const DOMAIN = "https://heapdump.cn"
 const LOGIN_URL = DOMAIN + "/api/login/authentication/v1/login"
@@ -28,13 +28,13 @@ async function signIn(): Promise<string> {
 }
 
 async function doSignIn(): Promise<Array<string>> {
-    if (!heapdumpAccount || !heapdumpPasswd) {
+    if (!heapdumpAccount || !heapdumpPassword) {
         return [];
     }
 
     let userAgent = user_agent.getRandomPcUserAgent()
     logger.info("开始执行heapdump签到")
-    let data = {"account": heapdumpAccount, "passwd": heapdumpPasswd}
+    let data = {"account": heapdumpAccount, "passwd": heapdumpPassword}
     let response = await fetch(LOGIN_URL, {
         method: 'POST',
         headers: {
@@ -60,6 +60,7 @@ async function doSignIn(): Promise<Array<string>> {
     const cookie = response.headers.get('set-cookie')
 
     // 清理一下 cookie 的格式，只保留基础的键值对
+    // @ts-ignore
     const real_cookie = cookie
         .replace(/Path=(.+?);\s/gi, '')
         .replace(/Max-Age=(.+?);\s/gi, '')

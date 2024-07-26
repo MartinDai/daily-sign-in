@@ -1,6 +1,6 @@
-import logger from '../util/logger'
-import user_agent from '../util/user_agent'
-import message from '../util/message'
+import logger from '../utils/logger'
+import user_agent from '../utils/user_agent'
+import message from '../utils/message'
 
 const v2exCookie = process.env.V2EX_COOKIE
 

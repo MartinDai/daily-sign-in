@@ -20,6 +20,11 @@ _**注意：实际执行的时间会因为Github自身的调度能力有限而�
 npm install -g pnpm
 ```
 
+### 使用pnpm安装tsx
+```
+pnpm add -D tsx
+```
+
 ### 本地编译安装代码
 ```
 pnpm install
@@ -36,6 +41,7 @@ pnpm run signIn
 - [V2EX](https://www.v2ex.com/)，需配置secrets key：V2EX_COOKIE
 - [B站](https://www.bilibili.com/)，需配置secrets key：BILIBILI_COOKIE
 - [恩山论坛](https://www.right.com.cn/)，需配置secrets key：RIGHT_COOKIE
+- [NodeSeek](https://www.nodeseek.com/)，需配置secrets key：NODE_SEEK_COOKIE
 
 ## 支持的通知方式
 

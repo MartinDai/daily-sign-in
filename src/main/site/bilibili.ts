@@ -1,7 +1,7 @@
-import logger from '../util/logger'
-import user_agent from '../util/user_agent'
-import message from '../util/message'
-import util from '../util/util'
+import logger from '../utils/logger'
+import user_agent from '../utils/user_agent'
+import message from '../utils/message'
+import util from '../utils/util'
 
 const bilibiliCookie = process.env.BILIBILI_COOKIE
 
