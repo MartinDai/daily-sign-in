@@ -5,7 +5,6 @@ import notify from './notify/notify'
 import v2ex from "./site/v2ex";
 import bilibili from "./site/bilibili";
 import right from "./site/right";
-import NodeSeek from "./site/NodeSeek";
 
 index()
     .then(() => {
@@ -18,7 +17,7 @@ index()
 
 async function index() {
     const signInResArray = []
-    for (const service of [heapdump, v2ex, bilibili, right, NodeSeek]) {
+    for (const service of [heapdump, v2ex, bilibili, right]) {
         const res = await service.signIn();
         if (res) {
             signInResArray.push(res)
